@@ -1,0 +1,35 @@
+h2 {
+  font-size: 30px;
+  text-align: center;
+}
+button:focus {
+  box-shadow: none;
+}
+
+.header > a {
+  color: white;
+  text-decoration: none;
+}
+.logo {
+  font-size: 30px;
+  color: white;
+}
+.title {
+  padding-top: 10px;
+  margin: 0;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  z-index: 10;
+  width: 100%;
+}
+.card-body-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-body-item-img {
+  padding-bottom: 20px;
+}

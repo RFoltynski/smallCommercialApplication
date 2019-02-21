@@ -1,0 +1,44 @@
+import { map } from "rxjs/operators";
+import { Observable } from "rxjs";
+import "rxjs/add/operator/map";
+
+import { Component } from "@angular/core";
+import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
+
+@Component({
+  selector: "app-shopping-cart",
+  templateUrl: "./shopping-cart.component.html",
+  styleUrls: ["./shopping-cart.component.css"]
+})
+export class ShoppingCartComponent {
+  itemsRef: AngularFireList<any>;
+  items: Observable<any[]>;
+  cartLength;
+  cartElements;
+
+  constructor(db: AngularFireDatabase) {
+    this.itemsRef = db.list("cart");
+    // Use snapshotChanges().map() to store the key
+    this.items = this.itemsRef
+      .snapshotChanges()
+      .pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
+  }
+
+  updateItem(key: any, newText: string) {
+    this.itemsRef.update(key, { amount: newText });
+  }
+
+  deleteItem(key: any, id: any) {
+    this.itemsRef.remove(key);
+
+    this.updateItem(key, "dsf");
+  }
+
+  // save(course) {
+  //   this.dataService.create(JSON.parse(JSON.stringify(course)));
+  // }
+}

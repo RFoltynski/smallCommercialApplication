@@ -1,0 +1,45 @@
+button:focus {
+  box-shadow: none;
+}
+
+button {
+  margin: 5px;
+}
+
+.container-fluid > .row {
+  width: 100%;
+  margin: 0;
+  flex-wrap: wrap-reverse;
+}
+
+a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul {
+  margin: 0;
+}
+
+.orderSummary {
+  padding: 10px;
+}
+.orderSummary-content-title {
+  padding-left: 20px;
+  font-size: 35px;
+}
+.orderSummary-content-item {
+  font-size: 25px;
+  padding-left: 20px;
+}
+
+.cart-item,
+.cart-items-img,
+.cart-items:last-child {
+  padding: 15px;
+}

@@ -1,0 +1,71 @@
+import { AngularFireDatabase } from "angularfire2/database";
+import { ShoppingCartService } from "./../shopping-cart.service";
+import { Product } from "./../Product";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+
+import { AngularFireList } from "@angular/fire/database";
+import { map } from "rxjs/operators";
+
+@Component({
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
+})
+export class HomeComponent {
+  data: any;
+  itemsKeys = [];
+  cartLength = sessionStorage.cartLength;
+  itemsRef: AngularFireList<any>;
+  items: Observable<any[]>;
+
+  constructor(
+    db: AngularFireDatabase,
+    private http: HttpClient,
+    private cartService: ShoppingCartService
+  ) {
+    this.itemsRef = db.list("cart");
+    // Use snapshotChanges().map() to store the key
+    this.items = this.itemsRef
+      .snapshotChanges()
+      .pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
+  }
+  
+  addItem(data: any) {
+    this.itemsRef.push(data).then(result => {
+      let czosnek = Object.keys(data);
+      console.log(czosnek);
+    });
+  }
+
+  ngOnInit() {
+    this.http
+      .get("http://shoppingcartapi.hire.inwedo.com/items")
+      .subscribe(resoponse => {
+        this.data = resoponse;
+        console.log(this.data);
+      });
+  }
+
+  search() {}
+
+  public movieList = ["Batman Vs Superman", "Civil War", "Deadpool"];
+  public cart = [];
+  public recentMovie = "None";
+
+  // selectedMovie(item) {
+  //   const itemRef = db.object("item");
+  //   itemRef.set({ name: "new name!" });
+
+  //   // this.cart = JSON.parse(sessionStorage.getItem("cartItems")) || [];
+  //   // this.recentMovie = item;
+  //   // this.cart.push(item);
+
+  //   // sessionStorage.cartItems = JSON.stringify(this.cart);
+  // }
+}

@@ -1,0 +1,72 @@
+<div class="header">
+  <a [routerLink]="['']">Sklep Komputerowy</a>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 cart-items">
+      <div @fade class="cart-item--list" *ngFor="let item of cartElements">
+        <div class="card shadow-sm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bd-placeholder-img card-img-top">
+                <li class="cart-item">
+                  <h2 class="cart-item--name product-text--large">
+                    {{ item.name }}
+                  </h2>
+                  <p class="cart-item--quantity product-text--small">
+                    Cena: {{ item.price }} zł, <br />
+                    Do zapłaty za dany towar:
+                    {{ item.sumPrice }} zł. <br />
+                    Data dodania towaru: <br />
+                    {{ item.time }}
+                  </p>
+                  Ilość sztuk: {{ item.quantity }}
+                  <button
+                    class=" btn btn-sm btn-outline-success"
+                    (click)="addQuan(item)"
+                  >
+                    +
+                  </button>
+                  <button
+                    class=" btn btn-sm btn-outline-info"
+                    (click)="reduceQuan(item)"
+                  >
+                    -
+                  </button>
+                  <button
+                    class=" btn btn-sm btn-outline-danger"
+                    (click)="removeItem(item)"
+                  >
+                    X
+                  </button>
+                </li>
+              </div>
+            </div>
+            <div
+              class="col-md-6 d-flex justify-content-center align-items-center"
+            >
+              <img class="cart-items-img" src="{{ item.imgUrl }}" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div @fade class="orderSummary card mb-4 shadow-sm ">
+        <h2 class="orderSummary-content-title">Podsumowanie Zamowienia:</h2>
+        <div class="orderSummary-content-item">
+          Kwota do zapłaty: {{ sumPrice }} zł,
+        </div>
+        <div class="orderSummary-content-item">
+          Lista produktow:
+          <ul *ngFor="let item of cartProducts">
+            <li>- {{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
