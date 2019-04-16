@@ -4,10 +4,11 @@
 /dist
 /tmp
 /out-tsc
-small-commercial-application/src/environments/environment.ts
+
 
 # dependencies
 /node_modules
+/small-commercial-application/src/environments/environment.ts
 
 # profiling files
 chrome-profiler-events.json
