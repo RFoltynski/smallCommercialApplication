@@ -14,7 +14,8 @@ export const environment = {
   }
 };
 
-export const adress = "https://cors-anywhere.herokuapp.com/http://shoppingcartapi.hire.inwedo.com/items";
+export const adress =
+  "https://cors-anywhere.herokuapp.com/http://shoppingcartapi.hire.inwedo.com/items";
 
 /*
  * For easier debugging in development mode, you can import the following file
