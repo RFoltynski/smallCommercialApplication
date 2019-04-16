@@ -8,7 +8,7 @@
       <div @fade class="cart-item--list" *ngFor="let item of cartElements">
         <div class="card shadow-sm">
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="bd-placeholder-img card-img-top">
                 <li class="cart-item">
                   <h2 class="cart-item--name product-text--large">
@@ -42,11 +42,6 @@
                   </button>
                 </li>
               </div>
-            </div>
-            <div
-              class="col-md-6 d-flex justify-content-center align-items-center"
-            >
-              <img class="cart-items-img" src="{{ item.imgUrl }}" />
             </div>
           </div>
         </div>

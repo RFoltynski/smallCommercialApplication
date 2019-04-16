@@ -14,6 +14,8 @@ export const environment = {
   }
 };
 
+export const adress = "https://cors-anywhere.herokuapp.com/http://shoppingcartapi.hire.inwedo.com/items";
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

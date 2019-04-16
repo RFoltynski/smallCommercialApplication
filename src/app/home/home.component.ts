@@ -1,3 +1,5 @@
+import { environment } from "./../../../../shop/src/environments/environment.prod";
+import { adress } from "./../../environments/environment";
 import { CartService } from "./../cart.service";
 import { HttpClient } from "@angular/common/http";
 import * as moment from "moment";
@@ -30,14 +32,10 @@ export class HomeComponent {
     this.cart = this.cS.getFromLoacl("cartItems") || [];
 
     // pobranie danych
-    this.http
-      .get(
-        "https://cors-anywhere.herokuapp.com/http://shoppingcartapi.hire.inwedo.com/items"
-      )
-      .subscribe(resoponse => {
-        this.data = resoponse;
-        sessionStorage.setItem("dataStorage", JSON.stringify(this.data));
-      });
+    this.http.get(adress).subscribe(resoponse => {
+      this.data = resoponse;
+      sessionStorage.setItem("dataStorage", JSON.stringify(this.data));
+    });
   }
   // sticky menu
   @HostListener("window:scroll", ["$event"])
