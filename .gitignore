@@ -5,7 +5,7 @@
 /tmp
 /out-tsc
 
-/small-commercial-application/src/environments
+/src/environments
 
 # dependencies
 /node_modules
