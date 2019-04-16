@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+small-commercial-application/src/environments/environment.ts
 
 # dependencies
 /node_modules
